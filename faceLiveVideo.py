@@ -35,7 +35,8 @@ while True:
         img1 = frame[x:x + w, y:y + h]
 
         if img1.size > 0:
-            result = DeepFace.analyze(img1, enforce_detection=False) #actions=['emotion'],
+            result = DeepFace.analyze(img1, actions=['emotion'], enforce_detection=False) #actions=['emotion'],
+            #print(str(result))
             cv2.putText(frame, result[0]['dominant_emotion'], (x,y-10),cv2.FONT_HERSHEY_SIMPLEX,0.9,(0,255,0),2)
             timetamps_detected.append(datetime.now())
             emotion_detected.append(result[0]['dominant_emotion'])
@@ -44,8 +45,8 @@ while True:
 
         #cv2.line(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
         #cv2.line(frame, (x, y + h), (x + w, y), (0, 255, 0), 2)
-        roi_gray = gray[y:y + h, x:x + w]
-        roi_color = frame[y:y + h, x:x + w]
+        #roi_gray = gray[y:y + h, x:x + w]
+        #roi_color = frame[y:y + h, x:x + w]
         #eyes = eye_cascade.detectMultiScale(roi_gray)
         #for (ex, ey, ew, eh) in eyes:
         #    cv2.circle(roi_color, (ex + int(ew / 2), ey + int(eh / 2)), int(ew / 2), (255, 0, 0), 2)
